@@ -30,7 +30,7 @@ function Task({ item }) {
 function TaskList({ tasks }) {
     return (
         <>
-            <ol className="TODOList">
+            <ol className="todo_list">
                 {tasks && tasks.length > 0 ? (
                     tasks?.map((item, index) => <Task key={index} item={item} />)
                 ) : (
