@@ -3,25 +3,18 @@ function Task({ item }) {
         <>
             <li id={item?.id} className="task">
                 <button className="leftSide">
-                    <svg>
-                        <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
-                    </svg>
-                    <p>{item?.title}</p>
+                    <span>
+                        <p style={item.isCompleted ? { textDecoration: "line-through" } : {}}>
+                            {item?.title}
+                        </p>
+                    </span>
                 </button>
-                <div className="rightSide">
-                    <button>
-                        <span className="visually-hidden">Edit</span>
-                        <svg>
-                            <path d="" />
-                        </svg>
-                    </button>
-                    <button>
-                        <span className="visually-hidden">Delete</span>
-                        <svg>
-                            <path d="" />
-                        </svg>
-                    </button>
-                </div>
+                <button>
+                    <span className="rightSide">Edit</span>
+                </button>
+                <button>
+                    <span className="rightSide">Delete</span>
+                </button>
             </li>
         </>
     );
@@ -30,13 +23,13 @@ function Task({ item }) {
 function TaskList({ tasks }) {
     return (
         <>
-            <ol className="todo_list">
+            <ul className="todo_list">
                 {tasks && tasks.length > 0 ? (
                     tasks?.map((item, index) => <Task key={index} item={item} />)
                 ) : (
                     <p>Nothing to do, need to add something</p>
                 )}
-            </ol>
+            </ul>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 function ProgressBar({ completedTask, totalTask }) {
-    const [progress] = useState(0);
+    const [progress] = useState(completedTask / totalTask);
     return (
         <>
             <section className="progress-bar-section">

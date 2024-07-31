@@ -1,6 +1,11 @@
-function Prompt() {
+function Prompt({ setTodos }) {
     const submitForm = (event) => {
         event.preventDefault();
+        const value = event.target.todo.value;
+        setTodos((prevTodos) => [
+            prevTodos,
+            { title: value, id: self.crypto.randomUUID(), isCompleted: false },
+        ]);
         //reset the form
         event.target.reset();
     };
@@ -17,9 +22,6 @@ function Prompt() {
                 </label>
                 <button>
                     <span className="visually-hidden">Submit</span>
-                    <svg>
-                        <path d="" />
-                    </svg>
                 </button>
             </form>
         </>

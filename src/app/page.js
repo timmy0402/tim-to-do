@@ -6,12 +6,21 @@ import TaskList from "@/components/TaskList";
 import ProgressBar from "@/components/ProgressBar";
 
 function Home() {
+  const [todos, setTodos] = React.useState([
+    { title: "Some task", id: self.crypto.randomUUID(), isCompleted: false },
+    { title: "Some other task", id: self.crypto.randomUUID(), isCompleted: true },
+    { title: "Last task", id: self.crypto.randomUUID(), isCompleted: false },
+  ]);
+  const todoCompleted = todos.filter(
+    (todo) => todo.isCompleted === true
+  ).length;
+  const totalTodo = todos.length;
   return (
     <div className="wrapper">
       <Header />
-      <ProgressBar completedTask={0} totalTask={0} />
-      <Prompt />
-      <TaskList tasks={[]} />
+      <ProgressBar completedTask={todoCompleted} totalTask={totalTodo} />
+      <Prompt setTodos={setTodos} />
+      <TaskList tasks={todos} />
     </div>
   );
 }
