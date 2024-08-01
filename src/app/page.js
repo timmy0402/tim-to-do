@@ -20,7 +20,7 @@ function Home() {
       <Header />
       <ProgressBar completedTask={todoCompleted} totalTask={totalTodo} />
       <Prompt setTodos={setTodos} />
-      <TaskList tasks={todos} />
+      <TaskList tasks={todos} setTodos={setTodos} />
     </div>
   );
 }

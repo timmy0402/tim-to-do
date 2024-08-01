@@ -3,11 +3,6 @@ function Task({ item }) {
         <>
             <li id={item?.id} className="task_item">
                 <button className="leftSide">
-                    <span>
-                        <p style={item.isCompleted ? { textDecoration: "line-through" } : {}}>
-                            {item?.title}
-                        </p>
-                    </span>
                     <svg
                         clipRule="evenodd"
                         fillRule="evenodd"
@@ -18,10 +13,13 @@ function Task({ item }) {
                         width={34}
                         height={34}
                         stroke="#22C55E"
-                        fill={item.is_completed ? "#22C55E" : "#0d0d0d"}
+                        fill={item.isCompleted ? "#22C55E" : "#0d0d0d"}
                     >
                         <circle cx="11.998" cy="11.998" fillRule="nonzero" r="9.998" />
                     </svg>
+                    <p style={item.isCompleted ? { textDecoration: "line-through" } : {}}>
+                        {item?.title}
+                    </p>
                 </button>
                 <div className="rightSide">
                     <button>
@@ -66,13 +64,13 @@ function Task({ item }) {
     );
 }
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, setTodos }) {
     return (
         <>
             <ol className="todo_list">
                 {tasks && tasks.length > 0 ? (
                     tasks?.map((item, index) => (
-                        <Task key={index} item={item} />
+                        <Task key={index} item={item} setTodos={setTodos} />
                     ))
                 ) : (
                     <p>Nothing to do, need to add something</p>
