@@ -3,6 +3,11 @@ function Task({ item, setTodos }) {
     const [editing, setEditing] = React.useState(false);
     const inputRef = React.useRef(null);
 
+    const handleDelete = () => {
+        setTodos((prevTodos) =>
+            prevTodos.filter((todo) =>
+                todo.id !== item.id));
+    };
     const handleEdit = () => {
         setEditing(true);
     };
@@ -96,7 +101,7 @@ function Task({ item, setTodos }) {
                                 />
                             </svg>
                         </button>
-                        <button>
+                        <button onClick={handleDelete}>
                             <span className="visually-hidden">Delete</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
