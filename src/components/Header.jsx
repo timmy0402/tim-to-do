@@ -6,7 +6,7 @@ function Header() {
                 <rect width="64" height="64" rx="8" ry="8" fill="#f5f5f5" stroke="#ccc" stroke-width="2" />
 
 
-                <g fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <g fill="none" stroke="#333" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round">
                     <rect x="12" y="16" width="8" height="8" rx="2" ry="2" />
                     <line x1="26" y1="20" x2="52" y2="20" />
 
