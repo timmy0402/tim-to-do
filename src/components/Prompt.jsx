@@ -1,13 +1,18 @@
 import ProgressBar from "./ProgressBar";
 
-function Prompt({ setTodos }) {
+function Prompt({ todos, setTodos }) {
     const submitForm = (event) => {
         event.preventDefault();
         const value = event.target.todo.value;
-        setTodos((prevTodos) => [
-            ...prevTodos,
-            { title: value, id: self.crypto.randomUUID(), isCompleted: false },
-        ]);
+        const newTodo = {
+            title: value,
+            id: self.crypto.randomUUID(),
+            isCompleted: false
+        };
+        setTodos((prevTodos) => [...prevTodos, newTodo,]);
+        // Store updated todo list in local storage
+        const newTaskList = JSON.stringify([...todos, newTodo]);
+        localStorage.setItem('todos', newTaskList);
         //reset the form
         event.target.reset();
     };

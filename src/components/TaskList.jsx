@@ -1,5 +1,5 @@
 import React from "react";
-function Task({ item, setTodos }) {
+function Task({ item, setTodos, todos }) {
     const [editing, setEditing] = React.useState(false);
     const inputRef = React.useRef(null);
 
@@ -7,6 +7,11 @@ function Task({ item, setTodos }) {
         setTodos((prevTodos) =>
             prevTodos.filter((todo) =>
                 todo.id !== item.id));
+        //update data
+        const updatedTodos = JSON.stringify(
+            todos.filter((todo) => todo.id !== item.id)
+        );
+        localStorage.setItem("todos", updatedTodos);
     };
     const handleEdit = () => {
         setEditing(true);
@@ -14,9 +19,15 @@ function Task({ item, setTodos }) {
     const handleInputSubmit = () => {
         event.preventDefault();
         setEditing(false);
+        //update data
+        const updatedTaskList = JSON.stringify(todos);
+        localStorage.setItem('todos', updatedTaskList);
     };
     const handleInputBlur = () => {
         setEditing(false);
+        //update data
+        const updatedTaskList = JSON.stringify(todos);
+        localStorage.setItem('todos', updatedTaskList);
     };
     React.useEffect(() => {
         if (editing && inputRef.current) {
@@ -43,6 +54,9 @@ function Task({ item, setTodos }) {
                     : todo
             )
         );
+        //update data
+        const updatedTaskList = JSON.stringify(todos);
+        localStorage.setItem('todos', updatedTaskList);
     };
     return (
 
@@ -133,7 +147,7 @@ function TaskList({ tasks, setTodos }) {
             <ol className="todo_list">
                 {tasks && tasks.length > 0 ? (
                     tasks?.map((item, index) => (
-                        <Task key={index} item={item} setTodos={setTodos} />
+                        <Task key={index} item={item} todos={tasks} setTodos={setTodos} />
                     ))
                 ) : (
                     <p>Nothing to do, need to add something</p>
